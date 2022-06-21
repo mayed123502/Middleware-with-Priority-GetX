@@ -129,7 +129,7 @@ class SuperMiddleWare extends GetMiddleware {
 
       
       
-      // in main.dart 
+ //in main.dart 
       
       
       Future initalServices() async {
@@ -143,7 +143,7 @@ class SuperMiddleWare extends GetMiddleware {
       
       
       
-      // example counter app 
+//example counter app 
       
       
       class SettingsServices extends GetxService {
@@ -165,7 +165,7 @@ class SuperMiddleWare extends GetMiddleware {
      }
 
 
-// in home page 
+//in home page 
 
 
     class Home extends GetView<SettingsServices> {} 
