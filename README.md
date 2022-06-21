@@ -105,4 +105,67 @@ class SuperMiddleWare extends GetMiddleware {
 ### هيك أول ما يشتغل التطبيق سوف يذهب الى شاشة ال super مباشرة
 
 
+# ____________________________________________________________
+
+
+# GetxServices And GetView
+
+### الفكرة من GetxServices هي انه أنا لما بدي اشغل التطبيق وفي عندي مجموعة اشياء المفروض تشتغل اول ما يشتغل مثل ( الاتصال بالفيربيز - 
+### انشاء ال sharedpreferences - اعطاء صلاحيات للتطبيق)
+
+
+
+      class SettingsServices extends GetxService {
+        late SharedPreferences sharePrefs;
+
+       Future<SettingsServices> init() async {
+         // start Services
+         sharePrefs = await SharedPreferences.getInstance();
+         // end Services
+
+        return this;
+            }
+        }
+
+      
+      
+      // in main.dart 
+      
+      
+      Future initalServices() async {
+        await Get.putAsync(() => SettingsServices().init());
+      }
+      
+      void main() async {
+        await initalServices();
+        runApp(const MyApp());
+       }
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+
      
