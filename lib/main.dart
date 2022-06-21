@@ -5,8 +5,14 @@ import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:learn_getx/views/home.dart';
 import 'package:learn_getx/views/login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+import 'middleware/auth_middeware.dart';
+
+SharedPreferences? sharepref;
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  sharepref = await SharedPreferences.getInstance();
   runApp(const MyApp());
 }
 
@@ -18,10 +24,14 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: Home(),
+      initialRoute: "/",
       getPages: [
-        GetPage(name: "/", page: () => const Login()),
-        GetPage(name: "/Home", page: () => Home()),
+        GetPage(
+          name: "/",
+          page: () =>  const Login(),
+          middlewares: [AuthMiddleWare()],
+        ),
+        GetPage(name: "/home", page: () => Home()),
       ],
     );
   }
