@@ -9,17 +9,37 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Login Screen")),
-      body: Center(
-        child: MaterialButton(
-
-          // in login Screen
-          onPressed: () {
-            sharepref!.setString("id", "1");
-            Get.offNamed("/home");
-          },
-          color: Colors.deepPurple,
-          child: const Text("Login"),
-        ),
+      body: Column(
+        children: [
+                const SizedBox(
+            height: 200,
+          ),
+          Center(
+            child: MaterialButton(
+              // in login Screen
+              onPressed: () {
+                sharepref!.setString("role", "user");
+                Get.offNamed("/home");
+              },
+              color: Colors.deepPurple,
+              child: const Text("Login User"),
+            ),
+          ),
+          const SizedBox(
+            height: 50,
+          ),
+          Center(
+            child: MaterialButton(
+              // in login Screen
+              onPressed: () {
+                sharepref!.setString("role", "admin");
+                Get.offNamed("/admin");
+              },
+              color: Colors.deepPurple,
+              child: const Text("Login Admin"),
+            ),
+          ),
+        ],
       ),
     );
   }

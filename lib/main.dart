@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:learn_getx/views/admin.dart';
 import 'package:learn_getx/views/home.dart';
 import 'package:learn_getx/views/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -28,10 +29,11 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(
           name: "/",
-          page: () =>  const Login(),
+          page: () => const Login(),
           middlewares: [AuthMiddleWare()],
         ),
         GetPage(name: "/home", page: () => Home()),
+        GetPage(name: "/admin", page: () => Admin()),
       ],
     );
   }
