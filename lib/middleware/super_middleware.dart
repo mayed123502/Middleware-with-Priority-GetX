@@ -4,20 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:learn_getx/main.dart';
 
-class AuthMiddleWare extends GetMiddleware {
+class SuperMiddleWare extends GetMiddleware {
   @override
-  int? get priority => 2;
+  int? get priority => 1;
+  bool myvar = true;
   @override
   RouteSettings? redirect(String? route) {
-    if (sharepref!.getString("role") == "user") {
+    if (myvar) {
       return const RouteSettings(
-        name: "/home",
+        name: "/super",
       );
     }
-    if (sharepref!.getString("role") == "admin") {
-      return const RouteSettings(
-        name: "/admin",
-      );
-    }
+    return null;
   }
 }
