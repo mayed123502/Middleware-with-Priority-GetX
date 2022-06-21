@@ -172,7 +172,7 @@ class SuperMiddleWare extends GetMiddleware {
     
     child: GetX<SettingsServices>(builder: (c)=> Text("${c.counter}"),)
 
-
+    MaterialButton(onPressed: (){controller.increase();})
 
       
       
