@@ -108,7 +108,7 @@ class SuperMiddleWare extends GetMiddleware {
 # ____________________________________________________________
 
 
-# GetxServices And GetView
+# 11-GetxServices And GetView
 
 ### الفكرة من GetxServices هي انه أنا لما بدي اشغل التطبيق وفي عندي مجموعة اشياء المفروض تشتغل اول ما يشتغل مثل ( الاتصال بالفيربيز - 
 ### انشاء ال sharedpreferences - اعطاء صلاحيات للتطبيق)
@@ -143,7 +143,37 @@ class SuperMiddleWare extends GetMiddleware {
       
       
       
+      // example counter app 
       
+      
+      class SettingsServices extends GetxService {
+       late SharedPreferences sharePrefs;
+       RxInt counter = 0.obs;
+
+       Future<SettingsServices> init() async {
+        // start Services
+       sharePrefs = await SharedPreferences.getInstance();
+       counter.value = sharePrefs.getInt("counter") ?? 0;
+       // end Services
+
+       return this;
+      }
+
+     increase() {
+       counter.value++;
+       sharePrefs.setInt("counter", counter.value);
+     }
+
+
+// in home page 
+
+
+    class Home extends GetView<SettingsServices> {} 
+    
+    child: GetX<SettingsServices>(builder: (c)=> Text("${c.counter}"),)
+
+
+
       
       
       
